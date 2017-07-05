@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { NavigatorIOS, Text, View, TouchableHighlight } from 'react-native';
 
-export default class NavigatorIOSApp extends React.Component {
+export default class MedListNavigator extends React.Component {
   render() {
     return (
       <NavigatorIOS
@@ -11,7 +11,9 @@ export default class NavigatorIOSApp extends React.Component {
           component: MedListView,
           title: 'TODAY\'S REMINDERS',
         }}
-        style={{flex: 1,  barTintColor:'#E03161', tintColor: '#E03161' }}
+        style={{flex: 1}}
+        barTintColor='#E03161'
+        titleTextColor="#ffffff"
       />
     );
   }
