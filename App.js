@@ -9,13 +9,10 @@ var {
   View,
 } = ReactNative;
 
-var MainTabbar = React.createClass({
-  statics: {
-    title: '<TabBarIOS>',
-    description: 'Tab-based navigation.',
-  },
+import MedList from './screens/medlist/MedList'
+import MedReminder from './screens/medreminder/MedReminder'
 
-  displayName: 'MainTabbar',
+var MainTabbar = React.createClass({
 
   getInitialState: function() {
     return {
@@ -24,13 +21,14 @@ var MainTabbar = React.createClass({
     };
   },
 
-  _renderContent: function(color: string, pageText: string, num?: number) {
-    return (
-      <View style={[styles.tabContent, {backgroundColor: color}]}>
-        <Text style={styles.tabText}>{pageText}</Text>
-        <Text style={styles.tabText}>{num} re-renders of the {pageText}</Text>
-      </View>
-    );
+  _renderContent: function() {
+
+    switch (this.state.selectedTab) {
+      case 'listTab':
+        return <MedList />
+      case 'reminderTab':
+        return <MedReminder />
+    }
   },
 
   render: function() {
@@ -41,6 +39,7 @@ var MainTabbar = React.createClass({
         barTintColor="#E03161">
 
         <TabBarIOS.Item
+          systemIcon="history"
           title="List"
           selected={this.state.selectedTab === 'listTab'}
           onPress={() => {
@@ -48,10 +47,11 @@ var MainTabbar = React.createClass({
               selectedTab: 'listTab',
             });
           }}>
-          {this._renderContent('#414A8C', 'List Tab')}
+          {this._renderContent()}
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
+          systemIcon="more"
           title="Med Reminder"
           selected={this.state.selectedTab === 'reminderTab'}
           onPress={() => {
@@ -60,7 +60,7 @@ var MainTabbar = React.createClass({
               presses: this.state.presses + 1
             });
           }}>
-          {this._renderContent('#21551C', 'Med Reminder', this.state.presses)}
+          {this._renderContent()}
         </TabBarIOS.Item>
       </TabBarIOS>
     );
