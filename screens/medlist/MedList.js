@@ -14,6 +14,7 @@ export default class MedListNavigator extends React.Component {
         style={{flex: 1}}
         barTintColor='#E03161'
         titleTextColor="#ffffff"
+        translucent={false}
       />
     );
   }
@@ -26,7 +27,7 @@ class MedListView extends Component {
     let dataSource = [
       {medName: 'Title Text',   time: '12:30', isTaken: true, key:"item1"},
       {medName: 'Title Text 2', time: '11:50', isTaken: true, key:"item2"},
-      {medName: 'Title Text 3', time: '14:50', isTaken: true, key:"item3"},
+      {medName: 'Title Text 3', time: '14:50', isTaken: false, key:"item3"},
     ];
 
     this.state = {
@@ -54,10 +55,12 @@ class MedListView extends Component {
                   <View style={styles.topLine} />
                   <View style={styles.bottomLine} />
                 </View>
-                <Image style={styles.dot} source={require('../../assets/med1-on.png')} />
+
+                <Image style={styles.dot} source={item.isTaken ? require('../../assets/med1-on.png') : require('../../assets/med1-no.png')} />
+
               </View>
               <View style={styles.content}>
-                <Text style={styles.medName}>{item.medName}</Text>
+                <Text style={styles.medName}>{item.medName} </Text>
                 <Text style={styles.medTime}>{item.time}</Text>
                 <View style={{paddingTop:10, flex:1, flexDirection:'row'}}>
                   <TouchableOpacity
@@ -147,7 +150,8 @@ var styles = StyleSheet.create({
  dot: {
    width: 25,
    height: 25,
-   marginTop:-80
+   marginTop:-80,
+   backgroundColor:'white'
  },
  medName: {
    fontWeight: 'bold',

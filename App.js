@@ -39,7 +39,8 @@ var MainTabbar = React.createClass({
       <TabBarIOS
         unselectedTintColor="white"
         tintColor="white"
-        barTintColor="#E03161">
+        barTintColor="#E03161"
+        translucent={false}>
         <TabBarIOS.Item
           icon={require('./assets/icon-list.png')}
           title="List"
