@@ -11,6 +11,9 @@ var {
 
 import MedList from './screens/medlist/MedList'
 import MedReminder from './screens/medreminder/MedReminder'
+// import FloatButton from './common/FloatButton'
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 var MainTabbar = React.createClass({
 
@@ -25,9 +28,9 @@ var MainTabbar = React.createClass({
 
     switch (this.state.selectedTab) {
       case 'listTab':
-        return <MedList />
+        return <MedList title="MedList"/>
       case 'reminderTab':
-        return <MedReminder />
+        return <MedReminder title="Med Reminder" />
     }
   },
 
@@ -37,7 +40,6 @@ var MainTabbar = React.createClass({
         unselectedTintColor="white"
         tintColor="white"
         barTintColor="#E03161">
-
         <TabBarIOS.Item
           systemIcon="history"
           title="List"
@@ -49,7 +51,6 @@ var MainTabbar = React.createClass({
           }}>
           {this._renderContent()}
         </TabBarIOS.Item>
-
         <TabBarIOS.Item
           systemIcon="more"
           title="Med Reminder"
@@ -75,6 +76,11 @@ var styles = StyleSheet.create({
   tabText: {
     color: 'white',
     margin: 50,
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
 });
 

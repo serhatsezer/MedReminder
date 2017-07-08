@@ -20,11 +20,6 @@ export default class MedReminder extends React.Component {
 }
 
 class MedReminderView extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    navigator: PropTypes.object.isRequired,
-  }
-
   _onForward = () => {
     this.props.navigator.push({
       title: 'Scene ' + nextIndex,
