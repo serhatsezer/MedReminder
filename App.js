@@ -41,8 +41,9 @@ var MainTabbar = React.createClass({
         tintColor="white"
         barTintColor="#E03161">
         <TabBarIOS.Item
-          systemIcon="history"
+          icon={require('./assets/icon-list.png')}
           title="List"
+          renderAsOriginal
           selected={this.state.selectedTab === 'listTab'}
           onPress={() => {
             this.setState({
@@ -52,8 +53,9 @@ var MainTabbar = React.createClass({
           {this._renderContent()}
         </TabBarIOS.Item>
         <TabBarIOS.Item
-          systemIcon="more"
-          title="Med Reminder"
+          icon={require('./assets/icon-meds.png')}
+          title="Reminder"
+          renderAsOriginal
           selected={this.state.selectedTab === 'reminderTab'}
           onPress={() => {
             this.setState({
