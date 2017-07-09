@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import { NavigatorIOS, Text, View, FlatList,Image, TouchableOpacity, StyleSheet } from 'react-native';
 import MedButton from '../../common/MedButton'
-
+import NewMedicine from '../addmedicine/NewMedicine'
 
 export default class MedListNavigator extends React.Component {
   render() {
@@ -39,8 +39,11 @@ class MedListView extends Component {
 
   }
 
-  buttonPressed = () => {
-    console.log('It\'s working.');
+  buttonPressed = (type: St) => {
+    this.props.navigator.push({
+      component: NewMedicine,
+      title: 'NEW MED REMINDER',
+    });
   }
 
   _onForward = () => {
@@ -48,7 +51,6 @@ class MedListView extends Component {
       title: 'Scene ' + nextIndex,
     });
   }
-
 
   render() {
     return (
