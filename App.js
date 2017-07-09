@@ -11,7 +11,6 @@ var {
 
 import MedList from './screens/medlist/MedList'
 import MedReminder from './screens/medreminder/MedReminder'
-// import FloatButton from './common/FloatButton'
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 

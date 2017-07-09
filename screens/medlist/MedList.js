@@ -2,6 +2,8 @@
 
 import React, { Component, PropTypes } from 'react';
 import { NavigatorIOS, Text, View, FlatList,Image, TouchableOpacity, StyleSheet } from 'react-native';
+import MedButton from '../../common/MedButton'
+
 
 export default class MedListNavigator extends React.Component {
   render() {
@@ -31,8 +33,14 @@ class MedListView extends Component {
     ];
 
     this.state = {
-      listDataSource: dataSource
+      listDataSource: dataSource,
+      item: null
     };
+
+  }
+
+  buttonPressed = () => {
+    console.log('It\'s working.');
   }
 
   _onForward = () => {
@@ -40,6 +48,7 @@ class MedListView extends Component {
       title: 'Scene ' + nextIndex,
     });
   }
+
 
   render() {
     return (
@@ -62,33 +71,53 @@ class MedListView extends Component {
               <View style={styles.content}>
                 <Text style={styles.medName}>{item.medName} </Text>
                 <Text style={styles.medTime}>{item.time}</Text>
-                <View style={{paddingTop:10, flex:1, flexDirection:'row'}}>
-                  <TouchableOpacity
-          style={{
-            alignItems:'center',
-             justifyContent:'center',
-             width:50,
-              height:25,
-               backgroundColor:'#00cc00',
-                borderRadius:30,
-                marginRight:10
-                 }}>
-                 <Text style={{color:'white', fontSize:12}}>Taken</Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-style={{
-  borderWidth:1,
-           borderColor:'#E03161',
-  alignItems:'center',
-   justifyContent:'center',
-   width:50,
-    height:25,
-      borderRadius:30,
-       }}>
-       <Text style={{color:'#E03161', fontSize:12}}>Edit</Text>
-</TouchableOpacity>
-        </View>
+              {/*
+                  I had to write if condition
+                  https://stackoverflow.com/questions/22538638/how-to-have-conditional-elements-and-keep-dry-with-facebook-reacts-jsx
+              */}
+                  {item.isTaken && (
+                    <View style={{paddingTop:10, flex:1, flexDirection:'row'}}>
+                    <MedButton
+                      label='Taken'
+                      buttonStyle={styles.medTakenButton}
+                      textStyle={{color:'white', fontSize:12}}
+                      onPress={this.buttonPressed}
+                    />
+                    <MedButton
+                      label='Edit'
+                      buttonStyle={styles.medEditButton}
+                      textStyle={{color:'#E03161', fontSize:12}}
+                      onPress={this.buttonPressed}
+                    />
+                  </View>
+                  )}
+                  {(item.isTaken == false) && (
+                    <View style={{paddingTop:10, flex:1, flexDirection:'row'}}>
+
+                    <MedButton
+                      label='Take'
+                      buttonStyle={styles.takeButton}
+                      textStyle={{color:'#00CC00', fontSize:12}}
+                      onPress={this.buttonPressed}
+                    />
+
+                    <MedButton
+                      label='Forgot'
+                      buttonStyle={styles.forgotButton}
+                      textStyle={{color:'#ffffff', fontSize:12}}
+                      onPress={this.buttonPressed}
+                    />
+
+                    <MedButton
+                      label='Edit'
+                      buttonStyle={styles.medEditButton}
+                      textStyle={{color:'#E03161', fontSize:12}}
+                      onPress={this.buttonPressed}
+                    />
+                  </View>
+                )
+              }
               </View>
             </View>
           }/>
@@ -164,9 +193,42 @@ var styles = StyleSheet.create({
    color:'gray'
  },
  medTakenButton: {
-   backgroundColor:'green'
+   backgroundColor:'#00CC00',
+   alignItems:'center',
+   justifyContent:'center',
+   width:50,
+   height:25,
+   borderRadius:30,
+   marginRight:10
  },
  medEditButton: {
-
+   borderWidth:1,
+   borderColor:'#E03161',
+   alignItems:'center',
+   justifyContent:'center',
+   width:50,
+   height:25,
+   borderRadius:30,
+ },
+ takeButton: {
+   borderWidth:1,
+   borderColor:'#00CC00',
+   alignItems:'center',
+   justifyContent:'center',
+   width:50,
+   height:25,
+   borderRadius:30,
+   marginRight:10
+ },
+ forgotButton: {
+   borderWidth:1,
+   borderColor:'#E03161',
+   backgroundColor:'#E03161',
+   alignItems:'center',
+   justifyContent:'center',
+   width:50,
+   height:25,
+   borderRadius:30,
+   marginRight:10
  }
 });
