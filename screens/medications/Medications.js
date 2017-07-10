@@ -35,7 +35,8 @@ class MedicationsView extends Component {
     ];
 
     this.state = {
-      listDataSource: dataSource
+      listDataSource: dataSource,
+      isMedTaken: false
     };
 
   }
@@ -63,7 +64,6 @@ class MedicationsView extends Component {
                     <View style={{paddingTop:10, flex:1, flexDirection:'row'}}>
                     <MedButton
                       label = {item.isTaken ? 'On' : 'Off'}
-                      buttonStyle = {item.isTaken ? MedicationsStyle.onButtonStyle : MedicationsStyle.offButtonStyle }
                       textStyle = {{color:'white', fontSize:12}}
                       onPress = {this.buttonPressed}
                     />
@@ -82,6 +82,8 @@ class MedicationsView extends Component {
   }
 
   buttonPressed = (type: St) => {
-
+    this.setState({
+      isMedTaken: !this.state.isMedTaken
+    })
   }
 }
