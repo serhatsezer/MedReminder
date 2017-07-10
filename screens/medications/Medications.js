@@ -65,6 +65,7 @@ class MedicationsView extends Component {
                     <MedButton
                       label = {item.isTaken ? 'On' : 'Off'}
                       textStyle = {{color:'white', fontSize:12}}
+                      buttonStyle = {item.isTaken ? MedicationsStyle.onButtonStyle : MedicationsStyle.offButtonStyle }
                       onPress = {this.buttonPressed}
                     />
                     <MedButton
