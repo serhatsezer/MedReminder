@@ -10,7 +10,7 @@ var {
 } = ReactNative;
 
 import MedList from './screens/medlist/MedList'
-import MedReminder from './screens/medreminder/MedReminder'
+import Medications from './screens/medications/Medications'
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -28,8 +28,8 @@ var MainTabbar = React.createClass({
     switch (this.state.selectedTab) {
       case 'listTab':
         return <MedList title="MedList"/>
-      case 'reminderTab':
-        return <MedReminder title="Med Reminder" />
+      case 'medicationTab':
+        return <Medications title="Medications" />
     }
   },
 
@@ -54,12 +54,12 @@ var MainTabbar = React.createClass({
         </TabBarIOS.Item>
         <TabBarIOS.Item
           icon={require('./assets/icon-meds.png')}
-          title="Reminder"
+          title="Medications"
           renderAsOriginal
-          selected={this.state.selectedTab === 'reminderTab'}
+          selected={this.state.selectedTab === 'medicationTab'}
           onPress={() => {
             this.setState({
-              selectedTab: 'reminderTab',
+              selectedTab: 'medicationTab',
               presses: this.state.presses + 1
             });
           }}>
