@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { NavigatorIOS, Text, View, TouchableHighlight } from 'react-native';
+import MedReminderStyle from '../../styles/MedReminderStyle'
 
 export default class MedReminder extends React.Component {
   render() {
@@ -9,11 +10,12 @@ export default class MedReminder extends React.Component {
       <NavigatorIOS
         initialRoute={{
           component: MedReminderView,
-          title: 'Med Reminder',
+          title: 'MED REMINDER',
         }}
         style={{flex: 1}}
         barTintColor='#E03161'
         titleTextColor="#ffffff"
+        translucent={false}
       />
     );
   }
