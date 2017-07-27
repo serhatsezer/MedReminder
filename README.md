@@ -1,5 +1,5 @@
 
-# Empatica <3 MedReminder project
+# MedReminder ReactNative test project
 This react native applications reminds you to take your medications on time!
 
 **Thoughts about ReactNative**
